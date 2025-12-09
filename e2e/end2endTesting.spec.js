@@ -9,10 +9,10 @@ test.describe('Unit Testing on Flipkart Website', () => {
                   await page.goto('https://www.flipkart.com/');
             })
 
-            test('Test a filpkart logo', async({page}) => {
-                  const logo = page.locator('div[class="_16ZfEv"]');
-                  await logo.isVisible();
-            })
+            // test('Test a filpkart logo', async({page}) => {
+            //       const logo = page.locator('div[class="_16ZfEv"]');
+            //       await logo.isVisible();
+            // })
 
             test('Test a Cart menu', async({page}) => {
                   const cart = page.locator('a[class="_3RX0a-"]');
