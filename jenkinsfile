@@ -1,15 +1,15 @@
 pipeline {
   agent any
 
-  tools {
-    nodejs 'node16'
-  }
+//   tools {
+//     nodejs 'node16'
+//   }
 
   stages {
     stage('Test') {
       steps {
         sh 'node --version'
-        sh 'npm --version'
+      //   sh 'npm --version'
       }
     }
   }
