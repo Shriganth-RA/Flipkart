@@ -1,3 +1,21 @@
+// pipeline {
+//   agent any
+
+//   triggers {
+//     githubPush()
+//   }
+
+//   stages {
+//     stage('Test') {
+//       steps {
+//         bat 'node --version'
+//       }
+//     }
+//   }
+// }
+
+
+
 pipeline {
   agent any
 
@@ -5,11 +23,46 @@ pipeline {
     githubPush()
   }
 
+  environment {
+    CI = "true"
+  }
+
   stages {
-    stage('Test') {
+
+    stage('Checkout') {
       steps {
-        bat 'node --version'
+        checkout scm
       }
+    }
+
+    stage('Install Dependencies') {
+      steps {
+        bat 'npm ci'
+      }
+    }
+
+    stage('Install Browsers') {
+      steps {
+        bat 'npx playwright install --with-deps'
+      }
+    }
+
+    stage('Run Playwright Tests') {
+      steps {
+        bat 'npx playwright test --reporter=html'
+      }
+    }
+  }
+
+  post {
+    always {
+      archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+    }
+    failure {
+      echo '❌ Playwright tests failed'
+    }
+    success {
+      echo '✅ Playwright tests passed'
     }
   }
 }
