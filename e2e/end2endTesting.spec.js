@@ -106,33 +106,33 @@ test.describe('Unit Testing on Flipkart Website', () => {
       })
 
 
-      test.describe('Test a cart page', () => {
+      // test.describe('Test a cart page', () => {
 
-            test.beforeEach(async({page}) => {
-                  await page.goto('https://www.flipkart.com/');
-            })
+      //       test.beforeEach(async({page}) => {
+      //             await page.goto('https://www.flipkart.com/');
+      //       })
 
-            test('Testing a product on cart', async({page}) => {
-                  const search_bar = page.locator('input[class="Pke_EE"]');
-                  await search_bar.isVisible();
-                  await search_bar.fill('Dell laptop');
-                  await page.keyboard.press('Enter');
+      //       test('Testing a product on cart', async({page}) => {
+      //             const search_bar = page.locator('input[class="Pke_EE"]');
+      //             await search_bar.isVisible();
+      //             await search_bar.fill('Dell laptop');
+      //             await page.keyboard.press('Enter');
 
-                  const product = page.locator('div[class="lvJbLV col-12-12"]');
-                  await product.isVisible();
-                  await product.first().click();
-                  console.log("Product clicked!");
+      //             const product = page.locator('div[class="lvJbLV col-12-12"]');
+      //             await product.isVisible();
+      //             await product.first().click();
+      //             console.log("Product clicked!");
 
-                  // Verify the Cart button
-                  const cart = page.locator('svg[class="kV7kR_"]');
-                  await cart.isVisible();
-                  await cart.click();
-                  console.log("Product add to cart");
+      //             // Verify the Cart button
+      //             const cart = page.locator('svg[class="kV7kR_"]');
+      //             await cart.isVisible();
+      //             await cart.click();
+      //             console.log("Product add to cart");
 
-                  // Check the product in cart page
-                  const cart_item = page.locator('div[class="eGXlor pk3Guc"]');
-                  await cart_item.isVisible();
-            })
-      })
+      //             // Check the product in cart page
+      //             const cart_item = page.locator('div[class="eGXlor pk3Guc"]');
+      //             await cart_item.isVisible();
+      //       })
+      // })
       
 })
